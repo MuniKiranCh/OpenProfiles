@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const personRoutes = require('./src/routes/personRoutes');  // Import your person routes
+const authRoutes = require('./src/routes/authRoutes');  // Import auth routes
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,6 +29,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 app.use('/api/person', personRoutes);  // Register person routes
+app.use('/api/auth', authRoutes);  // Register auth routes
 
 // Start the server
 app.listen(PORT, () => {
